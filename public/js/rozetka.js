@@ -3,9 +3,11 @@ $(window).load(function () {
 });
 
 $(document).ajaxStart(function () {
+    $('.table').hide();
     $('.loader').show();
 }).ajaxStop(function () {
     $('.loader').hide();
+    $('.table').show();
 });
 
 $(document).ready(function () {
