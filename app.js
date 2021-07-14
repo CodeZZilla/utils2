@@ -21,11 +21,11 @@ app.get('/', async function (req, res) {
     res.render('index')
 });
 
-app.get('/rozetka', async (req, res) =>{
-    res.render('rozetkaTable')
+app.get('/prom', async (req, res) =>{
+    res.render('promTable')
 });
 
-app.get('/rozetka-data', async (req, res) => {
+app.get('/prom-data', async (req, res) => {
     let arrAll = await model.getAllProducts()
 
     let outputArr = []
