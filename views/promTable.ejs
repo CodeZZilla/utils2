@@ -9,11 +9,20 @@
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 </head>
 <body>
 <div style="display: block;margin-left: auto; margin-right: auto; width: 110px; height: 110px" class="loader"></div>
-<div id="divTable" style="display: none; margin-left: auto; margin-right: auto; width: 1000px; height: 450px">
+<div id="divTable" style="display: none; margin-left: 50px; margin-right: 50px; width: auto; height: 450px">
+    <div>
+        <select id="statusSelect">
+            <option value="0">ПОЛНОЕ_СОВПАДЕНИЕ</option>
+            <option value="1">ТОЧНОЕ_СОВПАДЕНИЕ</option>
+            <option value="2">ЧАСТИЧНОЕ_СОВПАДЕНИЕ</option>
+        </select>
+        <button onclick="btnClick()">Показать</button>
+    </div>
     <table id="table" class="display">
         <thead>
         <tr>
@@ -22,7 +31,7 @@
             <th>price</th>
             <th>url</th>
             <th>status</th>
-<!--            <th>commands</th>-->
+            <!--            <th>commands</th>-->
         </tr>
         </thead>
     </table>
