@@ -1,17 +1,6 @@
 $(window).load(function () {
     $('.loader').hide();
-});
-
-$(document).ajaxStart(function () {
-    $('.table').hide();
-    $('.loader').show();
-}).ajaxStop(function () {
-    $('.loader').hide();
-    $('.table').show();
-});
-
-$(document).ready(function () {
-    console.log('start')
+    $('.divTable').show();
     $.get('/rozetka-data', function (arr) {
         console.log('start2')
         let table = $("#table").DataTable();
@@ -33,3 +22,16 @@ $(document).ready(function () {
         });
     });
 });
+
+$(document).ajaxStart(function () {
+    $('.divTable').hide();
+    $('.loader').show();
+}).ajaxStop(function () {
+    $('.loader').hide();
+    $('.divTable').show();
+});
+
+// $(document).ready(function () {
+//     console.log('start')
+//
+// });
