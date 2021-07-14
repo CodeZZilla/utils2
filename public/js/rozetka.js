@@ -17,7 +17,7 @@ $(document).ajaxStart(function () {
 $(document).ready(function () {
     $('.loader').hide();
     console.log('start')
-    $.get('/rozetka-data', function (arr) {
+    $.get('/prom-data', function (arr) {
         console.log('start2')
         let table = $("#table").DataTable();
         table.clear();
