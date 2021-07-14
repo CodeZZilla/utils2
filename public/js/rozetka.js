@@ -11,7 +11,7 @@ $(document).ajaxStart(function () {
     if (divDisplay == 'none') {
         div.style.display = 'block';
     }
-    $('.divTable').show();
+    $('.loader').hide();
 });
 
 $(document).ready(function () {
