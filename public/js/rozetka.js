@@ -1,3 +1,13 @@
+$(window).load(function () {
+    $('.loader').hide();
+});
+
+$(document).ajaxStart(function () {
+    $('.loader').show();
+}).ajaxStop(function () {
+    $('.loader').hide();
+});
+
 $(document).ready(function () {
     console.log('start')
     $.get('/rozetka-data', function (arr) {
