@@ -1,22 +1,21 @@
-$(window).load(function () {
-    $('.loader').hide();
-    //$('#divTable').show();
+$(document).ajaxStart(function () {
     let div = document.getElementById('divTable');
     let divDisplay = getComputedStyle(div).display;
     if (divDisplay == 'none') {
         div.style.display = 'block';
     }
-});
-
-$(document).ajaxStart(function () {
-    $('.divTable').hide();
     $('.loader').show();
 }).ajaxStop(function () {
-    $('.loader').hide();
+    let div = document.getElementById('divTable');
+    let divDisplay = getComputedStyle(div).display;
+    if (divDisplay == 'block') {
+        div.style.display = 'none';
+    }
     $('.divTable').show();
 });
 
 $(document).ready(function () {
+    $('.loader').hide();
     console.log('start')
     $.get('/rozetka-data', function (arr) {
         console.log('start2')
