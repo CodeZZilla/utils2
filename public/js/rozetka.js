@@ -14,7 +14,7 @@ $(document).ready(function () {
                 {data: 'price'},
                 {data: 'url',
                     "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<a href='"+oData.url+"'>"+oData.url+"</a>");
+                        $(nTd).html("<a href='"+oData.url+"'  target=\"_blank\">"+oData.url+"</a>");
                     }},
                 {data: 'status'}
             ]
