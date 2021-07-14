@@ -40,21 +40,21 @@ app.get('/prom-data', async (req, res) => {
         })
     }
 
-    if(req.params.filter == 0){
+    if(req.query.filter == 0){
         let newArr = []
         for (let item of outputArr){
             if(item.status === 'ПОЛНОЕ_СОВПАДЕНИЕ'){
                 newArr.push(item)
             }
         }
-    }else if(req.params.filter == 1){
+    }else if(req.query.filter == 1){
         let newArr = []
         for (let item of outputArr){
             if(item.status === 'ТОЧНОЕ_СОВПАДЕНИЕ'){
                 newArr.push(item)
             }
         }
-    }else if(req.params.filter == 1){
+    }else if(req.query.filter == 1){
         let newArr = []
         for (let item of outputArr){
             if(item.status === 'ЧАСТИЧНОЕ_СОВПАДЕНИЕ'){
