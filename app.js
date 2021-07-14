@@ -26,6 +26,7 @@ app.get('/prom', async (req, res) =>{
 });
 
 app.get('/prom-data', async (req, res) => {
+    //console.log(req.params.filter);
     let arrAll = await model.getAllProducts()
 
     let outputArr = []
@@ -39,7 +40,30 @@ app.get('/prom-data', async (req, res) => {
         })
     }
 
-    res.send(outputArr)
+    if(req.params.filter == 0){
+        let newArr = []
+        for (let item of outputArr){
+            if(item.status === 'ПОЛНОЕ_СОВПАДЕНИЕ'){
+                newArr.push(item)
+            }
+        }
+    }else if(req.params.filter == 1){
+        let newArr = []
+        for (let item of outputArr){
+            if(item.status === 'ТОЧНОЕ_СОВПАДЕНИЕ'){
+                newArr.push(item)
+            }
+        }
+    }else if(req.params.filter == 1){
+        let newArr = []
+        for (let item of outputArr){
+            if(item.status === 'ЧАСТИЧНОЕ_СОВПАДЕНИЕ'){
+                newArr.push(item)
+            }
+        }
+    }else {
+        res.send(outputArr)
+    }
 });
 
 
