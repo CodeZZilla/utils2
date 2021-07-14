@@ -1,15 +1,15 @@
 $(document).ajaxStart(function () {
     let div = document.getElementById('divTable');
     let divDisplay = getComputedStyle(div).display;
-    if (divDisplay == 'none') {
-        div.style.display = 'block';
+    if (divDisplay == 'block') {
+        div.style.display = 'none';
     }
     $('.loader').show();
 }).ajaxStop(function () {
     let div = document.getElementById('divTable');
     let divDisplay = getComputedStyle(div).display;
-    if (divDisplay == 'block') {
-        div.style.display = 'none';
+    if (divDisplay == 'none') {
+        div.style.display = 'block';
     }
     $('.divTable').show();
 });
