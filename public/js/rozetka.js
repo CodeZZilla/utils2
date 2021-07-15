@@ -43,6 +43,9 @@ $(document).ready(function () {
             buttons: [
                 'searchPanes'
             ],
+            searchPanes: {
+                columns: [5]
+            },
             dom: 'Bfrtip'
         });
     });
