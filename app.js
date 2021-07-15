@@ -42,6 +42,11 @@ app.get('/prom-data', async (req, res) => {
     res.send(outputArr)
 });
 
+app.get('/prom-data-good', async (req, res) => {
+    let arrAll = await model.getAllGoodProducts()
+    res.send(arrAll)
+});
+
 app.get('/updateUrl', async function (req, res) {
     console.log(req.query)
     await model.updateProduct(req.query)

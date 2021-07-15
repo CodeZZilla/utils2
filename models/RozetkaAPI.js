@@ -15,6 +15,17 @@ class Product {
         });
     }
 
+    /* Вибірка всіх Good записів з БД */
+    static getAllGoodProducts() {
+        return new Promise((resolve) => {
+            const queryPosts = 'SELECT * FROM `prom_ua_parsed_products` WHERE compare_status = "ПОЛНОЕ_СОВПАДЕНИЕ"';
+            connection.query(queryPosts, (error, results) => {
+                if (error) throw error;
+                resolve(results);
+            });
+        });
+    }
+
     /* Оновлення інфомації */
     static updateProduct(obj) {
         return new Promise((resolve) => {
