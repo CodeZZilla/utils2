@@ -43,6 +43,7 @@ app.get('/prom-data', async (req, res) => {
 });
 
 app.get('/updateUrl', async function (req, res) {
+    console.log(req.query)
     await model.updateProduct(req.query)
     res.send('ok');
 });
