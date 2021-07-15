@@ -40,9 +40,9 @@ $(document).ready(function () {
                 },
                 {data: 'status'}
             ],
-            searchPanes: {
-                columns: [6]
-            },
+            buttons: [
+                'searchPanes'
+            ],
             dom: 'Plfrtip'
         });
     });
