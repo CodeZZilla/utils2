@@ -39,19 +39,7 @@ $(document).ready(function () {
                     }
                 },
                 {data: 'status'}
-            ],
-            buttons: [
-                'searchPanes'
-            ],
-            columnDefs: [
-                {
-                    searchPanes: {
-                        controls: false
-                    },
-                    targets: [4]
-                }
-            ],
-            dom: 'Bfrtip'
+            ]
         });
     });
 });
