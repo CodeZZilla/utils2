@@ -43,7 +43,7 @@ $(document).ready(function () {
             buttons: [
                 'searchPanes'
             ],
-            dom: 'Plfrtip'
+            dom: 'Bfrtip'
         });
     });
 });
