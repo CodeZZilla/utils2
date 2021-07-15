@@ -19,7 +19,7 @@ class Product {
     static updateProduct(obj) {
         return new Promise((resolve) => {
             const queryUpdate = 'UPDATE prom_ua_parsed_products SET url = ?, compare_status = "ПОЛНОЕ_СОВПАДЕНИЕ" WHERE id= ?';
-            const arr = [+obj.url, +obj.id];
+            const arr = [obj.url, obj.id];
             connection.query(queryUpdate, arr, (error, results) => {
                 if (error) throw error;
                 resolve(results);
