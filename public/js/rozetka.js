@@ -39,7 +39,8 @@ $(document).ready(function () {
                     }
                 },
                 {data: 'status'}
-            ]
+            ],
+            dom: 'Plfrtip'
         });
     });
 });
