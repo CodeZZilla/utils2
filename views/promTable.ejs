@@ -6,14 +6,11 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Rozetka Table</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/4.0.0/material-components-web.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.material.min.css">
-
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/dataTables.material.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
 </head>
 <body>
 <div style="display: block;margin-left: auto; margin-right: auto; width: 110px; height: 110px" class="loader"></div>
@@ -27,7 +24,7 @@
 <!--        <button onclick="btnClick()">Показать</button>-->
 <!--    </div>-->
 <!--    -->
-    <table id="table" class="mdl-data-table" style="width:100%">
+    <table id="table" ellSpacing="0" width="100%" class="table">
         <thead>
         <tr>
             <th>id</th>
