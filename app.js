@@ -42,6 +42,13 @@ app.get('/prom-data', async (req, res) => {
     res.send(outputArr)
 });
 
+app.get('/updateUrl', async function (req, res) {
+    console.log(req.query);
+    console.log(req.params);
+    res.send('ok');
+});
+
+
 
 app.listen(PORT, () => {
     console.log('Server Start!!!! PORT: ' + PORT);

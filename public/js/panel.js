@@ -26,6 +26,7 @@ $(function () {
     window.operateEvents = {
         'click .edit': function (e, value, row, index) {
             let tableRow = $table.find(`tr[data-index=${index}]`).first();
+
             tableRow.find("a.edit").css("display", "none");
             tableRow.find("a.link").css("display", "none");
 
