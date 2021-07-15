@@ -28,6 +28,7 @@ $(document).ready(function () {
         $('#table').DataTable({
             data: arr,
             columns: [
+                {data: 'id'},
                 {data: 'feed_id'},
                 {data: 'product_name'},
                 {data: 'price'},
@@ -47,25 +48,5 @@ $(document).ready(function () {
 
 function btnClick(){
     let val = $("#statusSelect").val();
-    $.get('/prom-data?filter='+val, function (arr) {
-        let table = $("#table").DataTable();
-        table.clear();
-        table.destroy();
 
-        $('#table').DataTable({
-            data: arr,
-            columns: [
-                {data: 'feed_id'},
-                {data: 'product_name'},
-                {data: 'price'},
-                {
-                    data: 'url',
-                    "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
-                        $(nTd).html("<a href='" + oData.url + "'  target=\"_blank\">" + oData.url + "</a>");
-                    }
-                },
-                {data: 'status'}
-            ]
-        });
-    });
 }

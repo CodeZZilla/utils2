@@ -26,12 +26,12 @@ app.get('/prom', async (req, res) =>{
 });
 
 app.get('/prom-data', async (req, res) => {
-    //console.log(req.params.filter);
     let arrAll = await model.getAllProducts()
 
     let outputArr = []
     for (let item of arrAll){
         outputArr.push({
+            id: item.id,
             feed_id: item.feed_id,
             product_name: item.product_name,
             price: item.price,
@@ -39,31 +39,7 @@ app.get('/prom-data', async (req, res) => {
             status: item.compare_status
         })
     }
-
-    if(req.query.filter == 0){
-        let newArr = []
-        for (let item of outputArr){
-            if(item.status === 'ПОЛНОЕ_СОВПАДЕНИЕ'){
-                newArr.push(item)
-            }
-        }
-    }else if(req.query.filter == 1){
-        let newArr = []
-        for (let item of outputArr){
-            if(item.status === 'ТОЧНОЕ_СОВПАДЕНИЕ'){
-                newArr.push(item)
-            }
-        }
-    }else if(req.query.filter == 1){
-        let newArr = []
-        for (let item of outputArr){
-            if(item.status === 'ЧАСТИЧНОЕ_СОВПАДЕНИЕ'){
-                newArr.push(item)
-            }
-        }
-    }else {
-        res.send(outputArr)
-    }
+    res.send(outputArr)
 });
 
 
