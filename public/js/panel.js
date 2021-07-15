@@ -99,13 +99,13 @@ $(function () {
         function linkFormatter(value, row, index) {
             return [
                 `<input class="link" type="text" style="display: none;width: 100%;">`,
-                `<a class="link" target='_blank' href="${row.autoSearchUrl}">${row.autoSearchUrl}</a>`,
+                `<a class="link" target='_blank' href="${row.url}">${row.url}</a>`,
             ].join('')
-            return $("<a target='_blank'></a>").text(row.autoSearchUrl).attr("href", row.autoSearchUrl).prop('outerHTML');
+            return $("<a target='_blank'></a>").text(row.url).attr("href", row.url).prop('outerHTML');
         }
 
         function statusFormatter(value, row, index) {
-            switch(row.parseStatus) {
+            switch(row.status) {
                 case "ПОЛНОЕ_СОВПАДЕНИЕ": return "ПОЛНОЕ_СОВПАДЕНИЕ";
                 case "ТОЧНОЕ_СОВПАДЕНИЕ": return "ТОЧНОЕ_СОВПАДЕНИЕ";
                 case "ЧАСТИЧНОЕ_СОВПАДЕНИЕ": return "ЧАСТИЧНОЕ_СОВПАДЕНИЕ";
