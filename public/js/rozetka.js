@@ -14,13 +14,14 @@ $(document).ajaxStart(function () {
     $('.loader').hide();
 });
 
-let dataInput = [];
+var editor;
 
 $(document).ready(function () {
     $('.loader').hide();
     console.log('start')
+
     $.get('/prom-data', function (arr) {
-        dataInput = arr;
+
         let table = $("#table").DataTable();
         table.clear();
         table.destroy();

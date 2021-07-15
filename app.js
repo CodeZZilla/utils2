@@ -22,7 +22,7 @@ app.get('/', async function (req, res) {
 });
 
 app.get('/prom', async (req, res) =>{
-    res.render('promTable')
+    res.render('promTable2')   //'promTable'
 });
 
 app.get('/prom-data', async (req, res) => {
