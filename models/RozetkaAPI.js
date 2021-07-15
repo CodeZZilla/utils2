@@ -3,12 +3,24 @@ const config = require('../config/config_mysql');
 
 const connection = mysql.createConnection(config);
 
-class Groups {
-    /* Вибірка всіх груп з БД */
+class Product {
+    /* Вибірка всіх записів з БД */
     static getAllProducts() {
         return new Promise((resolve) => {
             const queryPosts = 'SELECT * FROM `prom_ua_parsed_products`';
             connection.query(queryPosts, (error, results) => {
+                if (error) throw error;
+                resolve(results);
+            });
+        });
+    }
+
+    /* Оновлення інфомації */
+    static updateProduct(obj) {
+        return new Promise((resolve) => {
+            const queryUpdate = 'UPDATE prom_ua_parsed_products SET url = ?, compare_status = "ПОЛНОЕ_СОВПАДЕНИЕ" WHERE id= ?';
+            const arr = [+obj.url, +obj.id];
+            connection.query(queryUpdate, arr, (error, results) => {
                 if (error) throw error;
                 resolve(results);
             });
@@ -49,16 +61,6 @@ class Groups {
     //     });
     // }
 
-    // /* Оновлення інфомації про групу */
-    // static updateGroup(obj) {
-    //     return new Promise((resolve) => {
-    //         const queryUpdate = 'UPDATE edu_group SET numb_group = ?, year_group = ?, id_spec = ? WHERE id_group= ?';
-    //         const arr = [+obj.numb_group, +obj.year_group, +obj.id_spec, +obj.id_group];
-    //         connection.query(queryUpdate, arr, (error, results) => {
-    //             if (error) throw error;
-    //             resolve(results);
-    //         });
-    //     });
-    // }
+
 }
-module.exports = Groups;
+module.exports = Product;

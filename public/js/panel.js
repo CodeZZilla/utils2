@@ -40,7 +40,7 @@ $(function () {
             tableRow.find("input.link").css("display", "none");
             tableRow.find("a.check").css("display", "none");
 
-            $.get(`/updateUrl?feedId=${row.feedId}&url=${tableRow.find("input.link").val()}`)
+            $.get(`/updateUrl?id=${row.id}&url=${tableRow.find("input.link").val()}`)
                 .fail(() => alert("Не удалось сохранить ссылку"));
 
             tableRow.find("a.link").text(tableRow.find("input.link").val());
