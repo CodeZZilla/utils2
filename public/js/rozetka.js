@@ -48,7 +48,7 @@ $(document).ready(function () {
                     searchPanes: {
                         controls: false
                     },
-                    targets: [1,2,3,4]
+                    targets: [4]
                 }
             ],
             dom: 'Bfrtip'
