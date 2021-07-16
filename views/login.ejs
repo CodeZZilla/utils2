@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stat</title>
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+</head>
+<body>
+<form action="/login/LogIn" method="post">
+    <h1>Вхід</h1>
+    <hr>
+    <div>
+        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--12-col-tablet mdl-cell--12-col-phone form__article">
+            <h3 class="text-color--smooth-gray">ЗАПОВНІТЬ ВСІ ПОЛЯ</h3>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+                <label class="mdl-textfield__label" for="username"><b>Username:</b></label>
+                <input class="mdl-textfield__input" type="text" placeholder="Enter Mobile" name="username" id="username"
+                       required>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+                <label class="mdl-textfield__label" for="password"><b>Password:</b></label>
+                <input class="mdl-textfield__input" type="password" placeholder="Enter Password" name="password"
+                       id="password"
+                       required>
+            </div>
+
+            <hr>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label full-size">
+                <button type="submit" value="Log In"
+                        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect button--colored-green">
+                    Вхід
+                </button>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>
+
+
+
