@@ -35,8 +35,8 @@ function btnClick() {
                 }
             }
         }
-        $('#allOrders').text(allSum + ' грн')
-        $('#biTrue').text(allSumBITrue + ' грн')
+        $('#allOrders').text('Всего: ' + allSum + ' грн')
+        $('#biTrue').text('BI(true): ' + allSumBITrue + ' грн')
 
         let table = $("#table").DataTable();
         table.clear();
