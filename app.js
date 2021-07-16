@@ -1,15 +1,24 @@
 const express = require('express');
-const path = require("path");
+const path = require('path');
+const fs = require('fs')
 const model = require('./models/RozetkaAPI');
 const passport = require('./config/passport.js');
 const bodyParser = require('body-parser');
-const urlencodedParser = bodyParser.urlencoded({ extended: true });
+const urlencodedParser = bodyParser.urlencoded({extended: true});
 const LocalStrategy = require('passport-local').Strategy;
-
 
 const app = express();
 
 const PORT = 8099;
+
+let map = new Map()
+fs.readFile('feedAll.json', "utf8", async function (err, data) {
+    let arr = JSON.parse(data);
+    for (let item of arr) {
+        map.set(item.id, item.supl_price);
+    }
+})
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -23,7 +32,7 @@ app.use(express.urlencoded({extended: true}));
 app.post('/login/LogIn', urlencodedParser,  /*loginController.login*/ passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login',
-    failureFlash:true,
+    failureFlash: true,
     badRequestMessage: 'Некоректно введені дані'
     /*
         sessions:false
@@ -38,7 +47,7 @@ app.get('/', async function (req, res) {
     res.render('index')
 });
 
-app.get('/prom', async (req, res) =>{
+app.get('/prom', async (req, res) => {
     res.render('promTable2')   //'promTable'
 });
 
@@ -46,7 +55,7 @@ app.get('/prom-data', async (req, res) => {
     let arrAll = await model.getAllProducts()
 
     let outputArr = []
-    for (let item of arrAll){
+    for (let item of arrAll) {
         outputArr.push({
             id: item.id,
             feed_id: item.feed_id,
@@ -62,7 +71,7 @@ app.get('/prom-data', async (req, res) => {
 app.get('/prom-data-good', async (req, res) => {
     let arrAll = await model.getAllGoodProducts()
     let outputArr = []
-    for (let item of arrAll){
+    for (let item of arrAll) {
         outputArr.push({
             id: item.id,
             feed_id: item.feed_id,
@@ -82,9 +91,17 @@ app.get('/updateUrl', async function (req, res) {
 });
 
 app.get('/tablo', async function (req, res) {
-   res.render('tablo')
+    res.render('tablo')
 });
 
+app.get('/feed', async function (req, res) {
+    res.send((map.get(Number.parseInt(req.query.id)))+'')
+});
+
+app.get('/feed_hotline_all', async function (req, res){
+    const file = `${__dirname}/output.xml`;
+    res.download(file);
+})
 
 
 app.listen(PORT, () => {
