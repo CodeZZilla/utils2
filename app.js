@@ -81,6 +81,10 @@ app.get('/updateUrl', async function (req, res) {
     res.send('ok');
 });
 
+app.get('/tablo', async function (req, res) {
+   res.render('tablo')
+});
+
 
 
 app.listen(PORT, () => {
