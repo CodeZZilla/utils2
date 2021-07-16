@@ -99,7 +99,7 @@ app.get('/feed', async function (req, res) {
 });
 
 app.get('/feed_hotline_all', async function (req, res){
-    const file = `${__dirname}/output.xml`;
+    const file = `${__dirname}/feed_hotline_all.xml`;
     res.download(file);
 })
 
