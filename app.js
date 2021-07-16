@@ -100,7 +100,7 @@ app.get('/feed', async function (req, res) {
 
 app.get('/feed_hotline_all', async function (req, res){
     const file = `${__dirname}/output.xml`;
-    res.download(file);
+    res.sendFile(file);
 })
 
 
