@@ -30,6 +30,10 @@ app.post('/login/LogIn', urlencodedParser,  /*loginController.login*/ passport.a
     */
 }));
 
+app.get('/login', async function (req, res) {
+    res.render('login')
+});
+
 app.get('/', async function (req, res) {
     res.render('index')
 });
