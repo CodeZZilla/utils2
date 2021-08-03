@@ -3,35 +3,48 @@ function btnClick() {
         + '&to=' + $('#dateTo').val()
         + '&limit=99999999999999999';
     $.get(str, async function (data) {
-        //console.log(data)
-        //console.log(data.length)
         $('#vseH2').text('Всего: ' + data.length)
 
         let biVal = $('#biSel').val()
         let bi1Arr = [], bi2Arr = []
         for (let item of data) {
-            if (item.BI == biVal) {
+            if (item.BI == 1) {
                 bi1Arr.push(item)
             } else {
                 bi2Arr.push(item)
             }
         }
 
+
         $('#bi1').text('BI=1: ' + bi1Arr.length)
-        $('#bi2').text('BI=2: ' + bi2Arr.length)
+        $('#bi2').text('BI=0: ' + bi2Arr.length)
 
-        let allSum = 0, bi1Sum = 0, bi2Sum = 0;
+        let bi1Sum = 0, bi2Sum = 0;
 
-        await $.each(bi1Arr, async function (k, v){
-            await $.each(v.products, async  function (key, product) {
-                await $.get('/feed?id=' + product.id, async function (data) {
-                    bi1Sum += (product.price - data)
-                })
-            })
-        }).then(function (){
-            console.log(bi1Sum.toFixed(2))
-        })
+        for await (let v of bi1Arr) {
+            for await (let product of v.products) {
+                let value = feedAll.find(el => el.id === product.id)
+                if (value == undefined) {
+                    value = 0
+                }else value = value.price
+                bi1Sum += (product.price - Number.parseFloat(value));
+            }
+        }
+        $('#bi1Sum').text('BI 1 sum: ' + bi1Sum.toFixed(2))
 
+
+        for await (let v of bi2Arr) {
+            for await (let product of v.products) {
+                let value = feedAll.find(el => el.id === product.id)
+                if (value == undefined) {
+                    value = 0
+                }else value = value.price
+                bi2Sum += (product.price - Number.parseFloat(value));
+            }
+        }
+        $('#bi2Sum').text('BI 0 sum: ' + bi2Sum.toFixed(2))
+
+        $('#vseSum').text('All sum: ' + (bi2Sum + bi1Sum).toFixed(2))
 
 
         // let allSumBITrue = 0;
@@ -59,17 +72,32 @@ function btnClick() {
         table.clear();
         table.destroy();
 
-        $('#table').DataTable({
-            data: bi1Arr,
-            columns: [
-                {data: 'order_id'},
-                {data: 'createdAt'},
-                {data: 'order_status_id'},
-                {data: 'BI'},
-                {data: 'total'},
-                {data: 'total_UAH'}
-            ]
-        });
+        if (biVal == 1) {
+            $('#table').DataTable({
+                data: bi1Arr,
+                columns: [
+                    {data: 'order_id'},
+                    {data: 'createdAt'},
+                    {data: 'order_status_id'},
+                    {data: 'BI'},
+                    {data: 'total'},
+                    {data: 'total_UAH'}
+                ]
+            });
+        } else {
+            $('#table').DataTable({
+                data: bi2Arr,
+                columns: [
+                    {data: 'order_id'},
+                    {data: 'createdAt'},
+                    {data: 'order_status_id'},
+                    {data: 'BI'},
+                    {data: 'total'},
+                    {data: 'total_UAH'}
+                ]
+            });
+        }
+
     });
 }
 
